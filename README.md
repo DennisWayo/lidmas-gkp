@@ -32,17 +32,17 @@ This deliberate abstraction allows efficient sweeps over squeezing, loss, and co
 .
 ├── main.py                     # Parameter sweeps and experiment driver
 ├── magic_state_injection.py    # Repeat-until-success (RUS) T-gate injection logic
-├── logical_noise.py             # Logical noise channels (dephasing, depolarizing, erasure)
-├── gkp_effective_noise.py       # Finite squeezing → effective GKP noise mappings
-├── outer_code.py                # Surface-code-inspired logical error scaling
-├── analysis_plots.py            # Plotting utilities and sensitivity analysis
-├── results_magic_state_sweep.csv# Raw simulation output (architecture-level metrics)
+├── logical_noise.py            # Logical noise channels (dephasing, depolarizing, erasure)
+├── gkp_effective_noise.py      # Finite squeezing → effective GKP noise mappings
+├── outer_code.py               # Surface-code-inspired logical error scaling
+├── analysis_plots.py           # Plotting utilities and sensitivity analysis
+├── results_magic_state_sweep.csv  # Raw simulation output (architecture-level metrics)
 └── figures/
-├── fig_success_vs_squeezing.png
-├── fig_overhead_vs_squeezing.png
-├── fig_fidelity_vs_squeezing.png
-├── fig_sensitivity_*.png
-└── fig_phase_boundary.png
+    ├── fig_success_vs_squeezing.png
+    ├── fig_overhead_vs_squeezing.png
+    ├── fig_fidelity_vs_squeezing.png
+    ├── fig_sensitivity_*.png
+    └── fig_phase_boundary.png
 
 
 ### Respresentative Results 
