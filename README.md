@@ -38,13 +38,7 @@ This deliberate abstraction allows efficient sweeps over squeezing, loss, and co
 ├── outer_code.py               # Surface-code-inspired logical error scaling
 ├── analysis_plots.py           # Plotting utilities and sensitivity analysis
 ├── results_magic_state_sweep.csv  # Raw simulation output (architecture-level metrics)
-└── figures/
-    ├── fig_success_vs_squeezing.png
-    ├── fig_overhead_vs_squeezing.png
-    ├── fig_fidelity_vs_squeezing.png
-    ├── fig_sensitivity_*.png
-    └── fig_phase_boundary.png
-
+```
 
 ### Respresentative Results 
 
