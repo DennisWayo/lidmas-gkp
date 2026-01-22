@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status](https://img.shields.io/badge/status-research--grade-brightgreen)
+![Scope](https://img.shields.io/badge/scope-architecture--level-lightgrey)
+![Quantum](https://img.shields.io/badge/domain-quantum%20error%20correction-purple)
+
 ## LiDMaS
 
 LiDMaS is a lightweight, architecture-level simulator for investigating logical magic-state injection in Gottesman–Kitaev–Preskill (GKP)–encoded photonic qubits.
