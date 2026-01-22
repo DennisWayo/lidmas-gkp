@@ -3,6 +3,9 @@
 ![Status](https://img.shields.io/badge/status-research--grade-brightgreen)
 ![Scope](https://img.shields.io/badge/scope-architecture--level-lightgrey)
 ![Quantum](https://img.shields.io/badge/domain-quantum%20error%20correction-purple)
+![Simulation](https://img.shields.io/badge/simulation-density--matrix-informational)
+
+# LiDMaS
 
 ## LiDMaS
 
@@ -35,6 +38,26 @@ What is not modeled
 This deliberate abstraction allows efficient sweeps over squeezing, loss, and code distance while retaining physical interpretability.
 
 <img width="3696" height="2536" alt="fig_logical_noise_model-2" src="https://github.com/user-attachments/assets/304ebf0c-699f-4572-b3f5-8b48fa4c61f6" />
+
+### Install dependencies & run:
+```bash
+pip install numpy matplotlib
+python main.py
+*No quantum SDKs such as PennyLane, Qiskit, or Strawberry Fields are required
+```
+
+### Configuring the parameter sweep
+```python
+cfg = SweepConfig(
+    squeezing_db_values=list(np.arange(8.0, 16.5, 0.5)),
+    loss_base_values=[0.005, 0.01, 0.015, 0.02, 0.025, 0.03],
+    distances=[1, 3, 5, 7],
+    max_rounds=10,
+    trials=5000,
+    seed=42,
+)
+```
+
 
 
 ### Structure 
