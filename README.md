@@ -29,6 +29,7 @@ What is not modeled
 This deliberate abstraction allows efficient sweeps over squeezing, loss, and code distance while retaining physical interpretability.
 
 ### Structure 
+```text
 .
 ├── main.py                     # Parameter sweeps and experiment driver
 ├── magic_state_injection.py    # Repeat-until-success (RUS) T-gate injection logic
