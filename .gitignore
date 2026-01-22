@@ -1,0 +1,51 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.env
+.venv
+venv/
+
+# =========================
+# IDE / Editor
+# =========================
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Data & outputs (generated)
+# =========================
+*.png
+*.pdf
+
+# Keep only source code figures if any
+# !figures/*.png
+
+# =========================
+# Logs & temporary files
+# =========================
+*.log
+*.tmp
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Optional: large sweeps
+# =========================
+results_*/
