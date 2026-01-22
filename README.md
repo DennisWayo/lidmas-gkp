@@ -28,6 +28,8 @@ What is not modeled
 
 This deliberate abstraction allows efficient sweeps over squeezing, loss, and code distance while retaining physical interpretability.
 
+![Uploading fig_logical_noise_model-2.png…]()
+
 ### Structure 
 ```text
 .
