@@ -35,6 +35,7 @@ from analysis_plots import (
     plot_metric_vs_squeezing_by_loss,
     plot_sensitivity_heatmaps,
     plot_phase_boundary,
+    plot_rus_t_injection_circuit,
 )
 
 def main():
@@ -111,15 +112,27 @@ def main():
     csv_path = "results_magic_state_sweep.csv"
     fieldnames = list(rows[0].keys()) if rows else []
     write_csv(csv_path, rows, fieldnames)
-    print(f"\n[Saved] {csv_path}")
 
     # Plots
+    fig_success = "fig_success_vs_squeezing.png"
+    fig_overhead = "fig_overhead_vs_squeezing.png"
+    fig_fidelity = "fig_fidelity_vs_squeezing.png"
+    fig_phase = "fig_phase_boundary.png"
+
+    plot_metric_vs_squeezing_by_loss(
+        rows,
+        metric="success_prob_within_cap",
+        ylabel="Success probability (within cap)",
+        title="RUS success probability vs squeezing",
+        outfile=fig_success,
+    )
+
     plot_metric_vs_squeezing_by_loss(
         rows,
         metric="avg_fidelity_logical_given_success",
         ylabel="Average logical fidelity (given success)",
         title="Logical magic-state fidelity vs squeezing",
-        outfile="fig_fidelity_vs_squeezing.png",
+        outfile=fig_fidelity,
     )
 
     plot_metric_vs_squeezing_by_loss(
@@ -127,15 +140,7 @@ def main():
         metric="avg_rounds_given_success",
         ylabel="Average RUS rounds (given success)",
         title="RUS overhead vs squeezing",
-        outfile="fig_overhead_vs_squeezing.png",
-    )
-
-    plot_metric_vs_squeezing_by_loss(
-        rows,
-        metric="avg_fidelity_logical_given_success",
-        ylabel="Average logical fidelity (given success)",
-        title="Logical magic-state fidelity vs squeezing",
-        outfile="fig_fidelity_vs_squeezing.png",
+        outfile=fig_overhead,
     )
 
     plot_sensitivity_heatmaps(
@@ -150,14 +155,22 @@ def main():
         metric_fidelity="avg_fidelity_logical_given_success",
         success_thresh=0.95,
         fidelity_thresh=0.79,
-        outfile="fig_phase_boundary.png"
+        outfile=fig_phase
     )
 
-    print("[Saved] sensitivity heatmaps")
-    print("[Saved] phase boundary plot")
-    print("[Saved] fig_success_vs_squeezing.png")
-    print("[Saved] fig_overhead_vs_squeezing.png")
-    print("[Saved] fig_fidelity_vs_squeezing.png")
+    # Circuit schematic (reproducible)
+    fig_circuit = "fig_rus_t_injection_circuit.png"
+    plot_rus_t_injection_circuit(outfile=fig_circuit)
+
+    print(f"\n[Saved] {csv_path}")
+    print(f"[Saved] {fig_success}")
+    print(f"[Saved] {fig_overhead}")
+    print(f"[Saved] {fig_fidelity}")
+    print(f"[Saved] {fig_phase}")
+    print(f"[Saved] {fig_circuit}")
+    for d in cfg.distances:
+        print(f"[Saved] fig_sensitivity_d{int(d)}_dF_dloss.png")
+        print(f"[Saved] fig_sensitivity_d{int(d)}_dF_dsqueezing.png")
 
 
 if __name__ == "__main__":
