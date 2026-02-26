@@ -5,19 +5,19 @@
 ![Quantum](https://img.shields.io/badge/domain-quantum%20error%20correction-purple)
 ![Simulation](https://img.shields.io/badge/simulation-density--matrix-informational)
 
-## LiDMaS
+# LiDMaS
 
 LiDMaS is a lightweight, architecture-level simulator for investigating logical magic-state injection in Gottesman–Kitaev–Preskill (GKP)–encoded photonic qubits.
 
 Rather than performing full continuous-variable wavefunction simulations or decoder-level syndrome tracking, LiDMaS adopts a density-matrix abstraction in which encoded logical qubits are represented as **2x2 density matrices** and dominant error mechanisms are modeled as effective logical channels. This enables rapid and transparent exploration of fault-tolerant design trade-offs in photonic quantum architectures.
 
-The simulator is specifically designed to study:
+The simulator is designed to study:
 - Repeat-until-success (RUS) logical T-gate magic-state injection
 - Finite-squeezing-induced logical noise in GKP encodings
 - Heralded photon-loss-induced erasure
 - Outer-code protection via surface-code–inspired scaling laws
 
-### Model Architect
+### Model Architecture
 
 LiDMaS follows an architecture-first abstraction, intentionally avoiding microscopic simulation details while preserving the structure of logical error propagation.
 
@@ -35,16 +35,28 @@ What is not modeled
 
 This deliberate abstraction allows efficient sweeps over squeezing, loss, and code distance while retaining physical interpretability.
 
-<img width="3696" height="2536" alt="fig_logical_noise_model-2" src="https://github.com/user-attachments/assets/304ebf0c-699f-4572-b3f5-8b48fa4c61f6" />
+Core architecture-level noise model:
 
-### Install dependencies & run:
+$$
+\mathcal{E}(\rho)=
+\begin{cases}
+\text{erasure}, & \text{with probability } p_E \\
+\mathcal{D}_{\text{depol}} \circ \mathcal{D}_Z(\rho), & \text{otherwise}
+\end{cases}
+$$
+
+with $\mathcal{D}_Z(\rho)=(1-p_Z)\rho + p_Z Z\rho Z$ and $\mathcal{D}_{\text{depol}}$ a standard depolarizing channel. The RUS injection loop repeats until success or a round cap is hit, enabling direct estimates of success probability, overhead, and logical fidelity.
+
+### Install Dependencies and Run
+
 ```bash
-pip install numpy matplotlib
+pip install numpy matplotlib scipy
 python main.py
-*No quantum SDKs such as PennyLane, Qiskit, or Strawberry Fields are required
 ```
+No quantum SDKs such as PennyLane, Qiskit, or Strawberry Fields are required.
 
 ### Configuring the parameter sweep
+
 ```python
 cfg = SweepConfig(
     squeezing_db_values=list(np.arange(8.0, 16.5, 0.5)),
@@ -59,6 +71,7 @@ cfg = SweepConfig(
 
 
 ### Structure 
+
 ```text
 .
 ├── main.py                     # Parameter sweeps and experiment driver
@@ -70,13 +83,13 @@ cfg = SweepConfig(
 ├── results_magic_state_sweep.csv  # Raw simulation output (architecture-level metrics)
 ```
 
-### Respresentative Results 
+### Representative Results 
 
 | Metric (given success)            | Typical range        | Key observation                                                                 |
 |----------------------------------|----------------------|----------------------------------------------------------------------------------|
-| RUS success probability          | 0.90 – 0.98          | Increases monotonically with squeezing; weak dependence on code distance         |
-| Average RUS rounds               | 1.15 – 1.20          | Overhead remains close to unity due to efficient heralding                        |
-| Logical fidelity (d = 3–7)       | 0.77 – 0.80          | Strongly improved by squeezing and outer-code distance                            |
+| RUS success probability          | 0.904 – 0.989        | Increases monotonically with squeezing; weak dependence on code distance         |
+| Average RUS rounds               | 1.151 – 1.203        | Overhead remains close to unity due to efficient heralding                        |
+| Logical fidelity (d = 3–7)       | 0.765 – 0.796        | Strongly improved by squeezing and outer-code distance                            |
 | Sensitivity to loss              | ≈ 0                  | Loss primarily affects success probability, not logical fidelity                 |
 | Sensitivity to squeezing         | Non-zero at low values | Finite-energy GKP noise is the dominant continuous error mechanism              |
 
@@ -90,6 +103,4 @@ LiDMaS is intended for:
 - Complementing (not replacing) decoder-level or CV-level simulations
 
 ### Citation
-
-
 
