@@ -115,3 +115,17 @@ LiDMaS is intended for:
 - Complementing (not replacing) decoder-level or CV-level simulations
 
 ### Citation
+
+If you use this work, please cite:
+
+```bibtex
+@misc{wayo2026lidmas,
+      title={LiDMaS: Architecture-Level Modeling of Fault-Tolerant Magic-State Injection in GKP Photonic Qubits}, 
+      author={Dennis Delali Kwesi Wayo},
+      year={2026},
+      eprint={2601.16244},
+      archivePrefix={arXiv},
+      primaryClass={quant-ph},
+      url={https://arxiv.org/abs/2601.16244}, 
+}
+```
