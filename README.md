@@ -45,14 +45,18 @@ $$
 \end{cases}
 $$
 
-where
+where:
+
 $$
 \mathcal{D}_Z(\rho)=(1-p_Z)\rho + p_Z Z\rho Z
 $$
+
 and
+
 $$
 \mathcal{D}_{\text{depol}}
 $$
+
 is a standard depolarizing channel. The RUS injection loop repeats until success or a round cap is hit, enabling direct estimates of success probability, overhead, and logical fidelity.
 
 ### Install Dependencies and Run
